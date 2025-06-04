@@ -38,3 +38,26 @@ The correct answer is B because it provides a balance between **low latency**, *
 
 </p>
 </details>
+
+
+
+---
+
+2. You're designing a multi-tenant SaaS platform used by thousands of enterprise customers, each with their own data and usage patterns. You need to ensure data isolation, efficient resource usage, and easy scaling as the customer base grows.
+What is the most scalable and maintainable architecture approach?
+
+- A. Deploy a dedicated application and database instance for each tenant (one stack per tenant).
+- B. Use a shared application and a single shared database with tenant data identified by a tenant ID.
+- C. Use a shared application with a pooled database model, partitioned by tenant ID, and apply row-level access control.
+- D. Use a serverless architecture where each tenant triggers isolated functions that access a common database without tenant-specific logic.
+
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: C
+**The correct answer is C** because it offers the best balance between **scalability**, **cost-efficiency**, and **data isolation**. A shared application with a **pooled database model** (also known as multi-tenant database with shared schema) allows you to support many tenants without duplicating infrastructure, while **row-level access control** ensures each tenant’s data is kept secure. It’s easier to manage than fully isolated deployments (A) and more scalable than a single shared database without proper partitioning (B). **Serverless without tenant-aware logic (D)** risks data leaks and lacks fine-grained control.
+
+
+</p>
+</details>
