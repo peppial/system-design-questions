@@ -61,3 +61,27 @@ What is the most scalable and maintainable architecture approach?
 
 </p>
 </details>
+
+
+---
+
+3. You’re building a high-traffic e-commerce website that needs to handle millions of product views per day and support real-time inventory updates. Which approach best balances read performance, data consistency, and system scalability?
+
+- A. Use a single relational database for both reads and writes, scaling vertically.
+- B. Use a relational database for writes and a distributed caching layer (e.g., Redis or Memcached) for reads with cache invalidation on updates.
+- C. Use a NoSQL database with eventual consistency for both reads and writes to maximize scalability.
+- D. Use multiple relational databases sharded by product ID without caching.
+
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: B
+**Option B is best** because it uses a relational database for **accurate writes** and a distributed cache for **fast reads**, with cache invalidation ensuring data freshness.  
+Option A relies on **vertical scaling**, which limits performance at high traffic.  
+Option C sacrifices **consistency for scalability**, risking stale inventory data, while option D shards the database but lacks caching, leading to potential **read bottlenecks**.
+
+
+
+</p>
+</details>
