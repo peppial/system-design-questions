@@ -81,6 +81,30 @@ What is the most scalable and maintainable architecture approach?
 Option A relies on **vertical scaling**, which limits performance at high traffic.  
 Option C sacrifices **consistency for scalability**, risking stale inventory data, while option D shards the database but lacks caching, leading to potential **read bottlenecks**.
 
+</p>
+</details>
+
+
+---
+
+4. You need to design a real-time collaborative document editing platform (like Google Docs) that supports concurrent edits from thousands of users worldwide with low latency and strong consistency. Which approach best handles concurrent edits and ensures conflict resolution without data loss?
+
+- A. Use a centralized locking mechanism where only one user can edit a document section at a time.
+- B. Use Operational Transformation (OT) algorithms to merge concurrent edits in real time across clients.
+- C. Use a last-write-wins (LWW) strategy where the most recent update overwrites previous ones.
+- D. Use periodic snapshots with offline editing and manual merge resolution on conflict.
+
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: B
+**Option B is best** because **Operational Transformation (OT)** allows multiple users to edit a document simultaneously by transforming and merging their changes in real time, preserving the intent of each edit and ensuring strong consistency without data loss. Other options either limit concurrency (A), risk overwriting changes (C), or delay collaboration with manual merges (D).
+
+---
+
+### What is **Operational Transformation (OT)**?  
+OT is an algorithmic technique that **transforms concurrent edits** from different users so they can be applied in a consistent order on all clients, resolving conflicts automatically and enabling smooth, real-time collaboration.
 
 
 </p>
