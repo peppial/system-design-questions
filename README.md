@@ -107,5 +107,26 @@ Option C sacrifices **consistency for scalability**, risking stale inventory dat
 OT is an algorithmic technique that **transforms concurrent edits** from different users so they can be applied in a consistent order on all clients, resolving conflicts automatically and enabling smooth, real-time collaboration.
 
 
+---
+
+### How OT works (high-level):
+
+1. Each client sends an operation (e.g., insert character at position 5).
+2. The server receives concurrent operations from multiple clients.
+3. The server transforms these operations relative to each other to maintain consistency.
+4. The transformed operations are broadcast back to all clients.
+5. Each client applies the operations in a way that preserves the users’ intentions.
+
+---
+
+### Example Scenario:
+
+- User A inserts "X" at position 5.
+- User B deletes a character at position 3.
+- Both operations arrive at the server nearly simultaneously.
+
+Without OT, applying these operations in different orders on clients can lead to inconsistent documents. OT transforms the operations so that each client applies them correctly, ensuring the final documents are identical.
+
+
 </p>
 </details>
