@@ -130,3 +130,41 @@ Without OT, applying these operations in different orders on clients can lead to
 
 </p>
 </details>
+
+
+
+---
+
+4. You are tasked with designing a global distributed database system that supports strong consistency, high availability, and partition tolerance across multiple data centers. Which of the following strategies best achieves this balance?
+
+- A. Use a leader-follower replication model with synchronous replication across all data centers.
+- B. Use a consensus protocol like Paxos or Raft to replicate data synchronously among data centers.
+- C. Use asynchronous replication with eventual consistency and conflict resolution.
+- D. Use a fully decentralized gossip protocol without strict coordination.
+
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: B
+---
+
+### Summary:  
+Option **B** (consensus protocols like Paxos or Raft) is the best choice because it ensures **strong consistency** and **high availability** by requiring agreement from a majority of nodes before committing data, even across multiple data centers. Other options either sacrifice consistency (C, D) or suffer from high latency and availability problems (A).
+
+---
+
+### Examples of databases using consensus protocols:  
+- **etcd** (uses Raft)  
+- **CockroachDB** (uses Raft)  
+- **Google Spanner** (uses a Paxos variant called TrueTime for global consistency)  
+- **Apache ZooKeeper** (uses Zab, a protocol similar to Paxos)
+
+---
+
+Would you like me to explain how Paxos or Raft work?
+
+
+
+</p>
+</details>
