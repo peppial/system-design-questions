@@ -127,15 +127,12 @@ OT is an algorithmic technique that **transforms concurrent edits** from differe
 
 Without OT, applying these operations in different orders on clients can lead to inconsistent documents. OT transforms the operations so that each client applies them correctly, ensuring the final documents are identical.
 
-
 </p>
 </details>
 
-
-
 ---
 
-4. You are tasked with designing a global distributed database system that supports strong consistency, high availability, and partition tolerance across multiple data centers. Which of the following strategies best achieves this balance?
+5. You are tasked with designing a global distributed database system that supports strong consistency, high availability, and partition tolerance across multiple data centers. Which of the following strategies best achieves this balance?
 
 - A. Use a leader-follower replication model with synchronous replication across all data centers.
 - B. Use a consensus protocol like Paxos or Raft to replicate data synchronously among data centers.
@@ -160,11 +157,47 @@ Option **B** (consensus protocols like Paxos or Raft) is the best choice because
 - **Google Spanner** (uses a Paxos variant called TrueTime for global consistency)  
 - **Apache ZooKeeper** (uses Zab, a protocol similar to Paxos)
 
+</p>
+</details>
+
 ---
 
-Would you like me to explain how Paxos or Raft work?
+6. You're designing a rate limiter for a high-traffic API that must support distributed environments with multiple application instances. Which of the following approaches best ensures accuracy, scalability, and resilience?
+
+- A. Use an in-memory token bucket algorithm in each API server instance.
+- B. Use a central Redis store with the leaky bucket algorithm and atomic operations.
+- C. Use a distributed log system like Kafka to queue and throttle requests sequentially.
+- D. Use client-side rate limiting with static thresholds and no coordination.
 
 
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: B 
+**"Use a central Redis store with the leaky bucket algorithm and atomic operations."**
+
+---
+
+### **Explanation:**
+
+- **A. In-memory token bucket per instance**  
+  - ❌ Fast but not accurate in a distributed environment. Each instance tracks its own limits, leading to inconsistencies.
+
+- **B. Central Redis with leaky bucket + atomic ops**  
+  - ✅ Ensures **global rate limiting** by centralizing the limit logic.
+  - Redis supports **atomic operations** (`INCR`, `EXPIRE`, `SETNX`, etc.), enabling **precise control** over request flow.
+  - Redis can be scaled with clustering and is often used in production for **distributed rate limiting**.
+
+- **C. Distributed log (Kafka)**  
+  - ❌ Overkill and not ideal for enforcing rate limits. Introduces latency and complexity without improving accuracy.
+
+- **D. Client-side static limits**  
+  - ❌ No central coordination. Clients can bypass or incorrectly implement limits, leading to abuse or overload.
+
+</p>
+</details>
+
+---
 
 </p>
 </details>
