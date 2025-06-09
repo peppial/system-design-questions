@@ -212,7 +212,6 @@ Option **B** (consensus protocols like Paxos or Raft) is the best choice because
 <p>
 
 #### Answer: B 
----
 **"Use a consensus protocol-based log (like Apache Kafka with exactly-once semantics)."**
 
 ---
