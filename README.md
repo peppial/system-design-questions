@@ -197,7 +197,43 @@ Option **B** (consensus protocols like Paxos or Raft) is the best choice because
 </p>
 </details>
 
+
 ---
 
+7. You are designing a global messaging system that must guarantee message ordering, exactly-once delivery, and low latency across multiple geographic regions. Which approach is most appropriate?
+
+- A. Use a distributed message queue with at-least-once delivery and client-side deduplication.
+- B. Use a consensus protocol-based log (like Apache Kafka with exactly-once semantics).
+- C. Use a simple pub-sub system without delivery guarantees for higher performance.
+- D. Use a relational database to store and query messages synchronously.
+
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: B 
+---
+**"Use a consensus protocol-based log (like Apache Kafka with exactly-once semantics)."**
+
+---
+
+### **Explanation:**
+
+- **A. Distributed queue with at-least-once delivery and client deduplication**  
+  - ❌ Guarantees delivery but not exactly-once semantics or strict ordering. Client-side deduplication adds complexity and potential errors.
+
+- **B. Consensus protocol-based log (Kafka with exactly-once semantics)**  
+  - ✅ Ensures **exactly-once delivery** via distributed transactions and atomic offset management.  
+  - Maintains **strict message ordering** within partitions.  
+  - Provides **low latency** and strong durability across geographic regions.  
+  - Widely used for systems requiring strong guarantees.
+
+- **C. Simple pub-sub without delivery guarantees**  
+  - ❌ Sacrifices ordering and delivery guarantees for performance; unsuitable for critical reliability needs.
+
+- **D. Relational database synchronous storage**  
+  - ❌ Not optimized for high-throughput messaging; synchronous writes lead to high latency and poor scalability.
 </p>
 </details>
+
+
