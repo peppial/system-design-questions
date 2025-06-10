@@ -234,3 +234,61 @@ Option **B** (consensus protocols like Paxos or Raft) is the best choice because
 </details>
 
 
+
+---
+
+8. You’re designing a high-frequency trading platform where latency must be minimized and data consistency is critical. Which architecture component is most suitable for processing and reacting to incoming trade data in microseconds?
+
+- A. Use a traditional relational database for trade processing and lookups.
+- B. Use a distributed message queue with eventual consistency.
+- C. Use an in-memory, event-driven stream processor with lock-free data structures.
+- D. Use periodic batch jobs to evaluate and respond to trade data.
+
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: B 
+**"Use an in-memory, event-driven stream processor with lock-free data structures."**
+
+---
+
+### **Explanation:**
+
+- **A. Traditional relational database**  
+  - ❌ Too slow for microsecond-level latency. Disk I/O and transaction overhead make it unsuitable for real-time trading.
+
+- **B. Distributed message queue with eventual consistency**  
+  - ❌ Not ideal for strict consistency or ultra-low latency. Messages may arrive out of order, and delays are unacceptable in HFT.
+
+- **C. In-memory, event-driven stream processor with lock-free data structures**  
+  - ✅ Offers **extremely low latency** by processing data directly in memory.  
+  - **Lock-free data structures** (like ring buffers) avoid contention and allow high-throughput, low-latency operations.  
+  - Used in systems like **LMAX Disruptor**, this approach is optimized for high-speed decision making in trading.
+
+- **D. Periodic batch jobs**  
+  - ❌ Completely unsuitable. Batch jobs introduce delays and are not reactive.
+
+---
+
+### **What is a Ring Buffer?**
+
+A **ring buffer** (or **circular buffer**) is a fixed-size, circular data structure that stores elements in a contiguous block of memory. When it reaches the end, it wraps around to the beginning, overwriting old data if necessary.
+
+#### Key Properties:
+- **Fixed size**: Pre-allocated to ensure predictable memory usage and performance.
+- **Two pointers**: A **write pointer** for adding data and a **read pointer** for consuming data.
+- **Wrap-around behavior**: When the end of the buffer is reached, it continues from the start, forming a circular structure.
+
+#### Why it’s used in high-performance systems:
+- Supports **lock-free concurrent access** for one producer and one consumer, minimizing contention.
+- Provides **low latency** and high throughput due to memory efficiency and sequential access.
+- Commonly used in **real-time systems** like high-frequency trading platforms, audio processing, and network packet buffers.
+
+---
+
+
+</p>
+</details>
+
+
