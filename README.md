@@ -287,6 +287,39 @@ A **ring buffer** (or **circular buffer**) is a fixed-size, circular data struct
 
 ---
 
+9. You're building a globally distributed application that must ensure strong consistency for reads and writes, even across regions. Which architectural approach is best suited to achieve this requirement?
+
+- A. Use a distributed database with leaderless replication (e.g. Cassandra).
+- B. Use eventual consistency with conflict resolution at read time.
+- C. Use a distributed database with a single leader and follower replicas.
+- D. Use a quorum-based write and read system with tunable consistency.
+
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: C
+---
+**"Use a distributed database with a single leader and follower replicas."**
+
+---
+
+### **Explanation:**
+
+- **A. Leaderless replication (e.g. Cassandra)**  
+  - ❌ Prioritizes availability and partition tolerance (AP from CAP theorem). It uses **eventual consistency**, which does not guarantee **strong consistency** across regions.
+
+- **B. Eventual consistency with read-time conflict resolution**  
+  - ❌ Acceptable for some use cases, but **not suitable** when strict ordering and consistency are required across regions.
+
+- **C. Distributed database with a single leader and follower replicas**  
+  - ✅ Guarantees **strong consistency** by directing all writes through a **central leader**, ensuring a **single source of truth**.  
+  - Follower replicas are kept in sync through replication, and reads can be configured to go to the leader for strong consistency.  
+  - Commonly used in systems like **Google Spanner** or **CockroachDB (in certain configurations)**.
+
+- **D. Quorum-based read/write system**  
+  - ⚠️ Can be **tuned for stronger consistency**, but requires careful configuration. Without strict enforcement, it may still allow inconsistency under some failure modes.
+---
 
 </p>
 </details>
