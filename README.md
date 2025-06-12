@@ -233,8 +233,6 @@ Option **B** (consensus protocols like Paxos or Raft) is the best choice because
 </p>
 </details>
 
-
-
 ---
 
 8. You’re designing a high-frequency trading platform where latency must be minimized and data consistency is critical. Which architecture component is most suitable for processing and reacting to incoming trade data in microseconds?
@@ -284,7 +282,8 @@ A **ring buffer** (or **circular buffer**) is a fixed-size, circular data struct
 - Supports **lock-free concurrent access** for one producer and one consumer, minimizing contention.
 - Provides **low latency** and high throughput due to memory efficiency and sequential access.
 - Commonly used in **real-time systems** like high-frequency trading platforms, audio processing, and network packet buffers.
-
+</p>
+</details>
 ---
 
 9. You're building a globally distributed application that must ensure strong consistency for reads and writes, even across regions. Which architectural approach is best suited to achieve this requirement?
@@ -323,7 +322,6 @@ A **ring buffer** (or **circular buffer**) is a fixed-size, circular data struct
 
 </p>
 </details>
-
 
 ---
 
