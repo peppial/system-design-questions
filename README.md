@@ -325,3 +325,46 @@ A **ring buffer** (or **circular buffer**) is a fixed-size, circular data struct
 </details>
 
 
+---
+
+10. You're designing a log analytics platform that must ingest terabytes of log data per day, support near real-time querying, and allow for high write throughput. What is the most appropriate architecture to support this use case?
+
+- A. Use a traditional relational database with indexing on log fields.
+- B. Use a time-series database with write-optimized storage and downsampling.
+- C. Use a distributed search engine like Elasticsearch with write buffering and sharding.
+- D. Use a key-value store with eventual consistency and background processing for queries.
+
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: C
+---
+
+### ✅ **Correct Answer: C**  
+**"Use a distributed search engine like Elasticsearch with write buffering and sharding."**
+
+---
+
+### **Explanation:**
+
+- **A. Traditional relational database with indexing**  
+  - ❌ Not suitable for high write throughput or large-scale log ingestion. Indexing slows down inserts, and scaling is limited.
+
+- **B. Time-series database with downsampling**  
+  - ⚠️ Works well for **metrics** and **time-bound events**, but **less efficient** for complex text-based log search and filtering.
+
+- **C. Distributed search engine (e.g., Elasticsearch)**  
+  - ✅ Designed for **high write throughput**, **real-time indexing**, and **powerful querying** (e.g., full-text, filters, aggregations).  
+  - Supports **sharding**, **replication**, and **write buffering**, which makes it ideal for log analytics at scale.  
+  - Used by systems like the **ELK Stack (Elasticsearch, Logstash, Kibana)**.
+
+- **D. Key-value store with eventual consistency**  
+  - ❌ Fast for simple lookups, but not designed for advanced queries or log analytics use cases.
+
+---
+
+</p>
+</details>
+
+
