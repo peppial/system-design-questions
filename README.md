@@ -39,8 +39,6 @@ The correct answer is B because it provides a balance between **low latency**, *
 </p>
 </details>
 
-
-
 ---
 
 2. You're designing a multi-tenant SaaS platform used by thousands of enterprise customers, each with their own data and usage patterns. You need to ensure data isolation, efficient resource usage, and easy scaling as the customer base grows.
@@ -284,6 +282,7 @@ A **ring buffer** (or **circular buffer**) is a fixed-size, circular data struct
 - Commonly used in **real-time systems** like high-frequency trading platforms, audio processing, and network packet buffers.
 </p>
 </details>
+
 ---
 
 9. You're building a globally distributed application that must ensure strong consistency for reads and writes, even across regions. Which architectural approach is best suited to achieve this requirement?
