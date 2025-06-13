@@ -359,7 +359,9 @@ A **ring buffer** (or **circular buffer**) is a fixed-size, circular data struct
 - **D. Key-value store with eventual consistency**  
   - ❌ Fast for simple lookups, but not designed for advanced queries or log analytics use cases.
  
-  - 
+
+</p>
+</details>
 ---
 
 11. You are designing a video streaming platform (like Netflix or YouTube). What is the most effective strategy to ensure low-latency playback and high availability for users across the globe?
