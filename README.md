@@ -358,8 +358,46 @@ A **ring buffer** (or **circular buffer**) is a fixed-size, circular data struct
 
 - **D. Key-value store with eventual consistency**  
   - ❌ Fast for simple lookups, but not designed for advanced queries or log analytics use cases.
+ 
+  - 
+---
+
+11. You are designing a video streaming platform (like Netflix or YouTube). What is the most effective strategy to ensure low-latency playback and high availability for users across the globe?
+
+- A. Store all video content in a central data center with powerful bandwidth
+- B. Use a peer-to-peer (P2P) network to distribute video content among users
+- C. Use a global CDN (Content Delivery Network) with caching and edge servers
+- D. Stream directly from origin servers using multi-threaded download techniques
+
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+#### Answer: C
+**"Use a global CDN (Content Delivery Network) with caching and edge servers."**
 
 ---
+
+### **Explanation:**
+
+- **A. Central data center with high bandwidth**  
+  - ❌ Centralized architecture introduces **high latency** for users far from the data center and is vulnerable to **single point of failure**.
+
+- **B. Peer-to-peer (P2P) distribution**  
+  - ⚠️ Reduces load on central servers but introduces **latency variability**, **security concerns**, and **inconsistent quality**, especially with sparse peers.
+
+- **C. Global CDN with caching and edge servers**  
+  - ✅ Best option for **low latency** and **high availability**.  
+  - CDNs cache video segments at **edge locations near users**, reducing latency and server load.  
+  - Supports **adaptive bitrate streaming** and **failover**, ensuring smooth user experience.
+
+- **D. Streaming directly from origin servers using multi-threading**  
+  - ❌ May improve speed but doesn't solve **latency** or **scalability** across global regions.
+
+---
+
+Would you like a diagram showing how a CDN-based video delivery system works?
+
 
 </p>
 </details>
