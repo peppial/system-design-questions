@@ -396,10 +396,6 @@ A **ring buffer** (or **circular buffer**) is a fixed-size, circular data struct
 - **D. Streaming directly from origin servers using multi-threading**  
   - ❌ May improve speed but doesn't solve **latency** or **scalability** across global regions.
 
----
-
-Would you like a diagram showing how a CDN-based video delivery system works?
-
 
 </p>
 </details>
