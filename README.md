@@ -402,3 +402,44 @@ A **ring buffer** (or **circular buffer**) is a fixed-size, circular data struct
 </details>
 
 
+---
+
+12.You are designing a distributed caching system for a high-traffic web application. Which strategy helps to avoid cache stampede (thundering herd problem) when many clients request the same missing key simultaneously?
+
+- A. Use simple cache expiration and let all requests hit the backend when expired
+- B. Implement cache locking or "request coalescing" to allow only one request to fetch the data
+- C. Increase cache TTL to a very long duration
+- D. Use consistent hashing to distribute keys evenly
+
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+---
+
+### ✅ **Correct Answer: B**  
+**"Implement cache locking or 'request coalescing' to allow only one request to fetch the data."**
+
+---
+
+### **Explanation:**
+
+- **A. Simple cache expiration with all requests hitting backend**  
+  - ❌ Causes a **cache stampede**, where many requests overwhelm the backend simultaneously.
+
+- **B. Cache locking/request coalescing**  
+  - ✅ Ensures that when a cached item expires or is missing, **only one request** fetches the data from the backend, while others wait for the cache to be refreshed.  
+  - This reduces backend load and prevents spikes in traffic.
+
+- **C. Increase cache TTL to a very long duration**  
+  - ⚠️ Reduces cache misses but risks serving **stale data** and reduces cache freshness.
+
+- **D. Use consistent hashing**  
+  - ❌ Helps distribute keys evenly across cache nodes but doesn’t directly address cache stampede.
+
+---
+
+</p>
+</details>
+
+
