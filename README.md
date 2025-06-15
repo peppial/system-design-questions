@@ -404,7 +404,7 @@ A **ring buffer** (or **circular buffer**) is a fixed-size, circular data struct
 
 ---
 
-12.You are designing a distributed caching system for a high-traffic web application. Which strategy helps to avoid cache stampede (thundering herd problem) when many clients request the same missing key simultaneously?
+12. You are designing a distributed caching system for a high-traffic web application. Which strategy helps to avoid cache stampede (thundering herd problem) when many clients request the same missing key simultaneously?
 
 - A. Use simple cache expiration and let all requests hit the backend when expired
 - B. Implement cache locking or "request coalescing" to allow only one request to fetch the data
@@ -436,6 +436,47 @@ A **ring buffer** (or **circular buffer**) is a fixed-size, circular data struct
 
 - **D. Use consistent hashing**  
   - ❌ Helps distribute keys evenly across cache nodes but doesn’t directly address cache stampede.
+
+---
+
+</p>
+</details>
+
+
+
+---
+
+13. You are designing a distributed database system. Which consistency model provides the best balance between availability and performance for a globally distributed system that can tolerate slightly stale reads?
+
+- A. Strong consistency
+- B. Eventual consistency
+- C. Linearizability
+- D. Causal consistency
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+---
+
+### ✅ **Correct Answer: D**  
+**"Causal consistency"**
+
+---
+
+### **Explanation:**
+
+- **A. Strong consistency**  
+  - ❌ Guarantees the latest value for every read but sacrifices **availability** and **latency**, especially in global systems.
+
+- **B. Eventual consistency**  
+  - ⚠️ Offers high availability and performance, but allows **out-of-order reads** with no guarantees about operation dependencies.
+
+- **C. Linearizability**  
+  - ❌ A strict form of strong consistency that maintains real-time order of operations; **poor performance** in geo-distributed systems.
+
+- **D. Causal consistency**  
+  - ✅ Provides a **balance** by preserving the order of **causally related operations** while allowing concurrent, non-conflicting updates to be seen in different orders.  
+  - Offers better **performance and availability** than strong models while maintaining logical consistency.
 
 ---
 
