@@ -505,17 +505,11 @@ A **ring buffer** (or **circular buffer**) is a fixed-size, circular data struct
 
 ### **Explanation:**
 
-# Caching and Scalability Strategies
-
-## Key Advantages
-
 - **Multi-layer hierarchy** provides optimal latency at each level (browser < CDN < application < database)
 - **Cache-aside with eventual consistency** balances performance with data freshness for e-commerce scenarios
 - **Bloom filters** significantly reduce cache miss penalties by avoiding unnecessary lookups
 - **Consistent hashing with virtual nodes** ensures even distribution and handles node failures gracefully
 - **Hazelcast** provides excellent performance and built-in distribution capabilities
-
-## Issues with Other Options
 
 The other options have critical issues:
 
@@ -523,11 +517,9 @@ The other options have critical issues:
 - **Option C:** Strong consistency conflicts with sub-millisecond requirements  
 - **Option D:** Write-behind strategy with distributed locks adds complexity without addressing the core scalability needs
 
-# Application-Level Cache Using Hazelcast
-
 **Hazelcast** is an in-memory data grid platform that provides distributed caching and computing capabilities. Using Hazelcast for application-level caching enables applications to store frequently accessed data in memory across a cluster of nodes, improving performance and scalability.
 
-## Key Features
+### Key Features
 
 - **Distributed Cache:** Hazelcast distributes cache data across multiple nodes, ensuring high availability and fault tolerance.
 - **In-Memory Storage:** Data is stored in RAM, enabling low-latency access compared to disk-based caches.
