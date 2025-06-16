@@ -484,3 +484,62 @@ A **ring buffer** (or **circular buffer**) is a fixed-size, circular data struct
 </details>
 
 
+
+---
+
+14. You're architecting a distributed caching system for an e-commerce platform that handles 100,000 requests per second during peak traffic. The system needs to maintain cache consistency across multiple data centers, handle cache warming efficiently, and provide sub-millisecond latency. Cache misses should not cause cascading failures. Which design strategy would be most effective?
+
+- A. Implement a two-tier cache architecture with Redis Cluster as L1 cache and Memcached as L2, use write-through caching with synchronous replication across data centers, and implement circuit breakers with exponential backoff for cache miss handling.
+- B. Deploy a multi-layer cache hierarchy with browser cache, CDN, application-level cache using Hazelcast, and database query cache. Use cache-aside pattern with eventual consistency, implement bloom filters to reduce unnecessary cache lookups, and use consistent hashing with virtual nodes for distribution.
+- C. Create a single global cache using Apache Ignite with persistent storage, implement strong consistency using Raft consensus algorithm, use predictive cache warming based on machine learning models, and employ bulkhead pattern to isolate cache failures.
+- D. Use a write-behind caching strategy with Apache Kafka as the message backbone, implement custom cache invalidation using database triggers, rely on client-side caching with HTTP ETags, and use distributed locks with Zookeeper for cache coordination.
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+---
+
+### ✅ **Correct Answer: B**  
+
+---
+
+### **Explanation:**
+
+# Caching and Scalability Strategies
+
+## Key Advantages
+
+- **Multi-layer hierarchy** provides optimal latency at each level (browser < CDN < application < database)
+- **Cache-aside with eventual consistency** balances performance with data freshness for e-commerce scenarios
+- **Bloom filters** significantly reduce cache miss penalties by avoiding unnecessary lookups
+- **Consistent hashing with virtual nodes** ensures even distribution and handles node failures gracefully
+- **Hazelcast** provides excellent performance and built-in distribution capabilities
+
+## Issues with Other Options
+
+The other options have critical issues:
+
+- **Option A:** Synchronous replication creates latency bottlenecks  
+- **Option C:** Strong consistency conflicts with sub-millisecond requirements  
+- **Option D:** Write-behind strategy with distributed locks adds complexity without addressing the core scalability needs
+
+# Application-Level Cache Using Hazelcast
+
+**Hazelcast** is an in-memory data grid platform that provides distributed caching and computing capabilities. Using Hazelcast for application-level caching enables applications to store frequently accessed data in memory across a cluster of nodes, improving performance and scalability.
+
+## Key Features
+
+- **Distributed Cache:** Hazelcast distributes cache data across multiple nodes, ensuring high availability and fault tolerance.
+- **In-Memory Storage:** Data is stored in RAM, enabling low-latency access compared to disk-based caches.
+- **Scalability:** Hazelcast automatically manages data partitioning and replication, allowing seamless scaling by adding or removing nodes.
+- **Consistent Hashing:** Ensures even distribution of data and helps in smooth handling of node failures.
+- **Near Cache:** Local cache on each application node for ultra-fast reads, reducing network calls.
+- **Data Structures Support:** Supports maps, queues, sets, and more, enabling flexible caching strategies.
+- **Integration:** Easy to integrate with Java applications and frameworks like Spring.
+
+
+---
+
+</p>
+</details>
+
