@@ -519,7 +519,7 @@ The other options have critical issues:
 
 **Hazelcast** is an in-memory data grid platform that provides distributed caching and computing capabilities. Using Hazelcast for application-level caching enables applications to store frequently accessed data in memory across a cluster of nodes, improving performance and scalability.
 
-### Key Features
+Key Features
 
 - **Distributed Cache:** Hazelcast distributes cache data across multiple nodes, ensuring high availability and fault tolerance.
 - **In-Memory Storage:** Data is stored in RAM, enabling low-latency access compared to disk-based caches.
