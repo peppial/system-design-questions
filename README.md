@@ -583,8 +583,6 @@ Which cache consistency and invalidation strategy would you implement?
 - Self-healing - caches naturally refresh based on TTL
 - Easy to debug and monitor using standard HTTP tools
 
-```
-
 #### Key Components:
 - **Multi-layer TTL**: Different TTL values at each cache layer
 - **ETag/Last-Modified**: For efficient conditional requests
