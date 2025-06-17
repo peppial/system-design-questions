@@ -535,3 +535,84 @@ Key Features
 </p>
 </details>
 
+
+
+---
+
+15. Question: Design a global content delivery and caching system like CloudFlare or AWS CloudFront
+You need to design a CDN that serves static and dynamic content globally with high performance and reliability. The system should handle:
+
+- Billions of requests per day across 200+ edge locations
+- Smart routing to optimal servers based on latency and load
+- Multi-layered caching (browser, edge, origin)
+- Real-time cache invalidation across all edge nodes
+- DDoS protection and traffic anomaly detection
+- Support for both static assets and dynamic API responses
+
+Which cache consistency and invalidation strategy would you implement?
+- A. Event-Driven Cache Invalidation - Use message queues (Kafka/SQS) to broadcast invalidation events to all edge nodes when content changes, with eventual consistency.
+- B. Time-Based TTL with Conditional Requests - Set TTL on cached content and use ETags/Last-Modified headers for conditional requests to origin, allowing stale-while-revalidate.
+- C. Hierarchical Cache Purging - Implement a tree-like purge propagation system where regional clusters coordinate invalidation before pushing to edge nodes.
+- D. Versioned Content with Immutable Caching - Version all content URLs and cache immutably, requiring application-level coordination for content updates but eliminating cache invalidation complexity.
+
+<details><summary><b>Answer</b></summary>
+<p>
+
+---
+
+### ✅ **Correct Answer: B**  
+
+---
+#### 1. **Balanced Performance vs Consistency**
+- Provides excellent cache hit rates while maintaining reasonable consistency
+- Allows serving stale content during origin failures (high availability)
+- Conditional requests minimize bandwidth usage when content hasn't changed
+
+#### 2. **Proven at Scale**
+- Used successfully by major CDNs (CloudFlare, AWS CloudFront, Fastly)
+- HTTP standards-based approach (ETags, Last-Modified, Cache-Control)
+- Well-understood by developers and operations teams
+
+#### 3. **Network Efficiency**
+- Conditional requests (304 Not Modified) save significant bandwidth
+- Stale-while-revalidate allows serving cached content while updating in background
+- Reduces load on origin servers compared to always-fresh approaches
+
+#### 4. **Operational Simplicity**
+- No complex message queue infrastructure required
+- Self-healing - caches naturally refresh based on TTL
+- Easy to debug and monitor using standard HTTP tools
+
+```
+
+#### Key Components:
+- **Multi-layer TTL**: Different TTL values at each cache layer
+- **ETag/Last-Modified**: For efficient conditional requests
+- **Stale-while-revalidate**: Serve stale content during updates
+- **Cache-Control headers**: Fine-grained control over caching behavior
+
+### Why Other Options Fall Short
+
+#### Option A (Event-Driven) Issues:
+- Complex infrastructure (message queues, event ordering)
+- Network partitions can cause inconsistency
+- Difficult to handle millions of invalidation events
+- Single point of failure in messaging system
+
+#### Option C (Hierarchical Purging) Issues:
+- Adds latency to invalidation process
+- Complex tree topology management
+- Still requires reliable messaging between layers
+- Doesn't solve the fundamental scale problem
+
+#### Option D (Versioned/Immutable) Issues:
+- Requires application changes for all content
+- Complex URL management and routing
+- Difficult to implement for dynamic content
+- High storage costs for maintaining versions
+
+---
+
+</p>
+</details>
+
