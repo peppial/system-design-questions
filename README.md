@@ -539,7 +539,7 @@ Key Features
 
 ---
 
-15. Question: Design a global content delivery and caching system like CloudFlare or AWS CloudFront
+15. Design a global content delivery and caching system like CloudFlare or AWS CloudFront
 You need to design a CDN that serves static and dynamic content globally with high performance and reliability. The system should handle:
 
 - Billions of requests per day across 200+ edge locations
@@ -608,6 +608,102 @@ Which cache consistency and invalidation strategy would you implement?
 - Complex URL management and routing
 - Difficult to implement for dynamic content
 - High storage costs for maintaining versions
+
+---
+
+</p>
+</details>
+
+
+
+---
+
+15. Design a distributed search engine like Elasticsearch or Google Search
+You need to design a search engine that can index and search across billions of documents with sub-second query response times. The system should handle:
+
+- Real-time document indexing and updates
+- Complex queries with filters, sorting, and aggregations
+- Auto-complete and typo tolerance
+- Distributed storage across multiple data centers
+- High availability with no single point of failure
+- Support for both structured and unstructured data
+
+Which indexing and query distribution strategy would you implement?
+- A. Master-Slave Replication with Round-Robin Query Distribution - Single master node handles all writes and updates indices, multiple read replicas serve queries with simple round-robin load balancing.
+- B. Consistent Hashing with Shard-Based Partitioning - Partition documents across multiple shards using consistent hashing, replicate each shard across multiple nodes, and distribute queries to all relevant shards.
+- C. Geographic Partitioning with Regional Masters - Partition data geographically with regional master nodes, route queries to nearest region first, with cross-region fallback for comprehensive results.
+- D. Lambda Architecture with Batch + Stream Processing - Separate batch layer for bulk indexing historical data and speed layer for real-time updates, merge results at query time using a serving layer.
+<details><summary><b>Answer</b></summary>
+<p>
+
+---
+
+### ✅ **Correct Answer: B** - Consistent Hashing with Shard-Based Partitioning**
+
+### Why This is the Best Choice
+
+#### 1. **Horizontal Scalability**
+- Documents distributed evenly across shards using consistent hashing
+- Easy to add/remove nodes without full rebalancing
+- Query load distributed across all shards in parallel
+- Linear scaling of both storage and compute capacity
+
+#### 2. **Fault Tolerance & High Availability**
+- Each shard replicated across multiple nodes (typically 2-3 replicas)
+- No single point of failure - system continues operating if nodes fail
+- Automatic failover to replica shards when primary fails
+- Data locality preserved during failures
+
+#### 3. **Query Performance**
+- Parallel query execution across all relevant shards
+- Results merged and ranked at coordinator node
+- Sub-second response times achievable through parallelization
+- Efficient for both simple term queries and complex aggregations
+
+#### 4. **Real-World Proven**
+- Used by Elasticsearch, Solr, and other production search systems
+- Well-understood operational patterns and troubleshooting
+- Mature tooling for monitoring and management
+
+#### Key Components:
+
+**Shard Distribution:**
+- Use document ID hash % num_shards for even distribution
+- Consistent hashing ring for dynamic shard management
+- Virtual nodes to handle heterogeneous hardware
+
+**Replication Strategy:**
+- Primary-replica model per shard
+- Async replication for indexing performance
+- Read from any replica for query load balancing
+
+**Query Execution:**
+1. Parse and optimize query at coordinator
+2. Scatter sub-queries to all relevant shards
+3. Execute in parallel across shard replicas
+4. Gather partial results and merge/rank globally
+5. Return top-K results to client
+
+### Why Other Options Fall Short
+
+#### Option A (Master-Slave) Issues:
+- **Single point of failure**: Master node bottleneck
+- **Limited write scalability**: All updates through one node
+- **Poor query distribution**: Round-robin doesn't consider data locality
+- **Replication lag**: Consistency issues between master and slaves
+
+#### Option C (Geographic Partitioning) Issues:
+- **Incomplete results**: Queries may miss relevant documents in other regions
+- **Complex routing logic**: Determining which regions to query
+- **Network latency**: Cross-region queries for comprehensive results
+- **Uneven load**: Some regions may have much more data
+
+#### Option D (Lambda Architecture) Issues:
+- **Complexity**: Managing three separate systems (batch, speed, serving)
+- **Consistency challenges**: Merging batch and real-time results
+- **Operational overhead**: Multiple technologies and data pipelines
+- **Query latency**: Additional merge step at serving layer
+
 
 ---
 
