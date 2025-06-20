@@ -638,7 +638,7 @@ Which indexing and query distribution strategy would you implement?
 
 ---
 
-### ✅ **Correct Answer: B** - Consistent Hashing with Shard-Based Partitioning**
+### ✅ **Correct Answer: B** - Consistent Hashing with Shard-Based Partitioning
 
 ### Why This is the Best Choice
 
@@ -703,7 +703,6 @@ Which indexing and query distribution strategy would you implement?
 - **Consistency challenges**: Merging batch and real-time results
 - **Operational overhead**: Multiple technologies and data pipelines
 - **Query latency**: Additional merge step at serving layer
-
 
 ---
 
