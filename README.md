@@ -709,3 +709,39 @@ Which indexing and query distribution strategy would you implement?
 </p>
 </details>
 
+
+
+---
+
+16. Design a real-time multiplayer game backend (like Fortnite or PUBG)
+You need to design a system that handles 100 million concurrent players across thousands of game matches. The system must provide:
+
+Ultra-low latency (sub-50ms) for game state updates
+Cheat detection and prevention
+Player matchmaking and lobby management
+Real-time voice chat and messaging
+Game state persistence and replay storage
+Global leaderboards and statistics
+
+Which architecture would you choose for handling real-time game state synchronization?
+- A. Authoritative Server with Client Prediction - Central game server maintains authoritative state, clients predict movements locally and reconcile with server updates using rollback/replay mechanisms.
+- B. Peer-to-Peer with Elected Host - Players connect directly to each other, one player acts as authoritative host, with automatic host migration when the current host leaves.
+- C. Lockstep Deterministic Simulation - All clients run identical game simulation, synchronized input commands are broadcast to all players, ensuring identical game state across all clients.
+- D. Hybrid Regional Servers with Edge Computing - Authoritative servers in each region with edge nodes for input collection, using predictive algorithms to compensate for network latency.
+- 
+<details><summary><b>Answer</b></summary>
+<p>
+
+---
+
+### ✅ **Correct Answer: A** - (Authoritative Server with Client Prediction)
+This is the industry standard because it provides the best balance of security, performance, and scalability. The server maintains the authoritative game state preventing cheating, while client prediction ensures responsive gameplay despite network latency. When conflicts occur, the client rolls back to the server state and replays actions. This approach is used by most successful competitive multiplayer games like CS:GO, Valorant, and Overwatch because it's cheat-resistant and handles network issues gracefully while maintaining fair gameplay for all players.
+
+Option B (P2P): Host can cheat easily, no central validation. Host disconnection breaks the game.
+Option C (Lockstep): One laggy player slows down everyone. Perfect determinism is nearly impossible to achieve.
+Option D (Hybrid Edge): Massive complexity and cost for minimal benefit over proven client-prediction methods.
+
+Bottom line: Option A is the only approach that scales securely to millions of players while preventing cheating.
+</p>
+</details>
+
