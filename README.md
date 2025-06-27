@@ -709,8 +709,6 @@ Which indexing and query distribution strategy would you implement?
 </p>
 </details>
 
-
-
 ---
 
 16. Design a real-time multiplayer game backend (like Fortnite or PUBG)
@@ -741,7 +739,33 @@ Option B (P2P): Host can cheat easily, no central validation. Host disconnection
 Option C (Lockstep): One laggy player slows down everyone. Perfect determinism is nearly impossible to achieve.
 Option D (Hybrid Edge): Massive complexity and cost for minimal benefit over proven client-prediction methods.
 
-Bottom line: Option A is the only approach that scales securely to millions of players while preventing cheating.
+
+---
+
+</p>
+</details>
+
+---
+
+17. Design a distributed financial trading system like NYSE or NASDAQ
+You need to design a high-frequency trading platform that processes millions of orders per second with strict regulatory compliance. The system must handle:
+
+Sub-microsecond order matching and execution, ACID transactions for all financial operations, Real-time market data feeds to thousands of clients, Audit trails and regulatory reporting, Risk management and circuit breakers, Multi-market arbitrage opportunities
+
+Which order matching and execution architecture would you implement?
+- A) Single-Threaded Event Loop with Memory-Mapped Files - Process all orders sequentially in a single thread to avoid locking overhead, use memory-mapped files for ultra-fast persistence and recovery.
+- B) Lock-Free Multi-Threading with Ring Buffers - Multiple threads processing different instrument types concurrently, using lock-free data structures and ring buffers for inter-thread communication.
+- C) Actor Model with Message Passing - Each trading instrument handled by separate actors, all communication through immutable messages, with supervision trees for fault tolerance.
+- D) Blockchain-Based Distributed Ledger - All trades recorded on a private blockchain for immutability and transparency, with consensus mechanisms ensuring all nodes agree on order execution.
+- 
+<details><summary><b>Answer</b></summary>
+<p>
+
+---
+
+### ✅ **Correct Answer: A** -  (Single-Threaded Event Loop with Memory-Mapped Files)
+Option A is the correct choice because financial exchanges prioritize deterministic, ultra-low latency over raw throughput - a single-threaded approach eliminates context switching overhead, lock contention, and ensures predictable order processing sequence required for regulatory compliance, while memory-mapped files provide nanosecond-level persistence without syscall overhead, which is exactly how real exchanges like CME and NASDAQ operate their core matching engines.
+Option B introduces non-deterministic ordering between threads and complex synchronization overhead that adds microseconds of jitter. Option C adds message serialization/deserialization overhead and unpredictable actor scheduling that's incompatible with microsecond requirements. Option D is completely unsuitable - blockchain consensus takes seconds/minutes while trading requires microsecond execution, plus the computational overhead would make high-frequency trading impossible.
 </p>
 </details>
 
