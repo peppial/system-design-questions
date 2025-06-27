@@ -765,6 +765,7 @@ Which order matching and execution architecture would you implement?
 
 ### ✅ **Correct Answer: A** -  (Single-Threaded Event Loop with Memory-Mapped Files)
 Option A is the correct choice because financial exchanges prioritize deterministic, ultra-low latency over raw throughput - a single-threaded approach eliminates context switching overhead, lock contention, and ensures predictable order processing sequence required for regulatory compliance, while memory-mapped files provide nanosecond-level persistence without syscall overhead, which is exactly how real exchanges like CME and NASDAQ operate their core matching engines.
+
 Option B introduces non-deterministic ordering between threads and complex synchronization overhead that adds microseconds of jitter. Option C adds message serialization/deserialization overhead and unpredictable actor scheduling that's incompatible with microsecond requirements. Option D is completely unsuitable - blockchain consensus takes seconds/minutes while trading requires microsecond execution, plus the computational overhead would make high-frequency trading impossible.
 </p>
 </details>
