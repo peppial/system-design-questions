@@ -757,7 +757,7 @@ Which order matching and execution architecture would you implement?
 - B) Lock-Free Multi-Threading with Ring Buffers - Multiple threads processing different instrument types concurrently, using lock-free data structures and ring buffers for inter-thread communication.
 - C) Actor Model with Message Passing - Each trading instrument handled by separate actors, all communication through immutable messages, with supervision trees for fault tolerance.
 - D) Blockchain-Based Distributed Ledger - All trades recorded on a private blockchain for immutability and transparency, with consensus mechanisms ensuring all nodes agree on order execution.
-- 
+
 <details><summary><b>Answer</b></summary>
 <p>
 
